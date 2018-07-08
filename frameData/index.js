@@ -3,7 +3,9 @@ import SF2 from './SuperStreetFighterII-Turbo';
 
 export default {
     games: [
-        { title: 'Super Street Fighter II: Turbo', data: SF2 },
-        { title: 'Street Fighter III: Third Strike', data: SF3 }
+        { title: 'Street Fighter II: Hyper Fighting', characters: null, id: 3 },
+        { title: 'Super Street Fighter II: Turbo', characters: SF2, id: 1 },
+        { title: 'Street Fighter III: Third Strike', characters: SF3, id: 2 },
+        { title: 'Street Fighter Alpha 3', characters: null, id: 4 }
     ]
 };

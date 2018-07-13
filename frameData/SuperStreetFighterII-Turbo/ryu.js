@@ -52,8 +52,8 @@ export default {
         },
     },
     supers: {
-        kenssuper: {
-            name: 'kensuper',
+        ryu: {
+            name: 'ryusuper',
             startup: 3,
             active: 3,
             recovery: 5,

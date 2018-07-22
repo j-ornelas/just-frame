@@ -47,16 +47,28 @@ const styles = StyleSheet.create({
     }
 });
 
-const GamesList = props => (
-    <View>
-        <Header
-            headerText="GAMES"
-        />
+const mapStateToProps = (state) => {
+    const { selectedGame, allGamesList } = state.gamesListState;
+    return { selectedGame, allGamesList };
+};
+// could do this...but it's overkill since we only have one action here
+// (so far)...
+// const mapActionsToProps = () => ({
+//     selectGame(id) {
+//         return (selectGame(id))
+//       }
+// });
+
+const GamesList = (props) => {
+    return (
         <ScrollView>
             <View style={styles.listContainer}>
                 {props.allGamesList.games.map(game => (
                     <TouchableOpacity
-                        onPress={() => props.selectGame(game.id)}
+                        onPress={() => {
+                            props.selectGame(game);
+                            props.navigation.navigate('CharacterSelect');
+                        }}
                         style={styles.listItem}
                         key={game.title}
                     >
@@ -71,19 +83,7 @@ const GamesList = props => (
                 ))}
             </View>
         </ScrollView>
-    </View>
-);
-
-const mapStateToProps = (state) => {
-    console.log('STATE', state);
-    const { selectedGame, allGamesList } = state.gamesListState;
-    return { selectedGame, allGamesList };
+    )
 };
-
-// const mapActionsToProps = () => ({
-//     selectGame(id) {
-//         return (selectGame(id))
-//       }
-// });
 
 export default connect(mapStateToProps, { selectGame })(GamesList);

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import Header from '../Header/Header';
+import { selectCharacter } from '../../redux/actions';
 
 const styles = StyleSheet.create({
     listContainer: {
@@ -34,12 +34,16 @@ const mapStateToProps = (state) => {
 
 const CharacterSelect = (props) => {
     const { characters } = props.selectedGame;
-    console.log(props)
+    console.log('CHARACTER SELECT PROPS', props)
     return (
         <ScrollView>
             <View style={styles.listContainer}>
                 {Object.keys(characters).map(characterName => (
                     <TouchableOpacity
+                        onPress={() => {
+                            props.selectCharacter(characters[characterName])
+                            props.navigation.navigate('Character', { characterName })
+                        }}
                         style={styles.listItem}
                         key={characterName}
                     >
@@ -53,4 +57,4 @@ const CharacterSelect = (props) => {
     );
 };
 
-export default connect(mapStateToProps, {})(CharacterSelect);
+export default connect(mapStateToProps, { selectCharacter })(CharacterSelect);

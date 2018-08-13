@@ -1,1 +1,1 @@
-export { selectGame } from './gameslist/gameslist';
+export { selectGame, selectCharacter } from './gameslist/gameslist';

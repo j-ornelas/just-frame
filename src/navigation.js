@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
-import { GamesList, CharacterSelect } from './components/GameStack';
+import { GamesList, CharacterSelect, Character } from './components/GameStack';
 
 const GameStack = createStackNavigator({
     GamesList: {
@@ -35,6 +35,12 @@ const GameStack = createStackNavigator({
             // )
         })
     },
+    Character: {
+        screen: Character,
+        navigationOptions: ({ navigation }) => ({
+            title: navigation.state.params.characterName.toUpperCase()
+        })
+    }
 }, {
     initialRouteName: 'GamesList',
 });
